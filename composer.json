@@ -1,0 +1,21 @@
+{
+    "name": "canaltp/sam-monitoring",
+    "type": "library",
+    "description": "Sam Monitoring Component",
+    "keywords": ["sam", "monitoring"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rémy Abi-Khalil",
+            "email": "remy.abikhalil@canaltp.fr"
+        },
+	{
+            "name": "Kévin Ziemianski",
+            "email": "kevin.ziemianski@canaltp.fr"
+        }
+    ],
+    "autoload": {
+        "classmap": [ "src/" ]
+    },
+    "minimum-stability": "dev"
+}
