@@ -40,11 +40,21 @@ abstract class AbstractComponentMonitor implements ComponentMonitorInterface
 
     public function addCategory(CategoryMonitorInterface $category)
     {
-        $this->categories[] = $category;
+        $this->categories[$category->getName()] = $category;
     }
 
     public function getCategories()
     {
         return ($this->categories);
+    }
+    
+    public function getCategoryByName($categoryName)
+    {
+        if (!isset($this->categories[$categoryName])) {
+            $newCategory = new \CanalTP\SamMonitoringComponent\Category\CategoryMonitor($categoryName);
+            $this->categories[$categoryName] = $newCategory; 
+        }
+        
+        return $this->categories[$categoryName];
     }
 }

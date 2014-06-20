@@ -9,6 +9,7 @@ abstract class AbstractServiceMonitor implements ServiceMonitorInterface
     protected $name = null;
     protected $state = null;
     protected $categories = null;
+    protected $message = '';
 
     public function __construct()
     {

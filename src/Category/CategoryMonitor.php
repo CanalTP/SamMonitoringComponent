@@ -4,14 +4,14 @@ namespace CanalTP\SamMonitoringComponent\Category;
 
 use CanalTP\SamMonitoringComponent\Service\ServiceMonitorInterface;
 
-abstract class AbstractCategoryMonitor implements CategoryMonitorInterface
+class CategoryMonitor implements CategoryMonitorInterface
 {
     protected $name = null;
     protected $services = null;
 
-    public function __construct()
+    public function __construct($name = 'Unknown')
     {
-        $this->name = 'Unknown';
+        $this->name = $name;
         $this->services = array();
     }
 
