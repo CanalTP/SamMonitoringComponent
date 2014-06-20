@@ -6,5 +6,5 @@ interface MonitorableComponentInterface
 {
     public function getName();
     public function getState();
-    public function getMonitorableCategories();
+    public function getCategories();
 }
