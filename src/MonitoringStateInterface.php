@@ -4,8 +4,8 @@ namespace CanalTP\SamMonitoringComponent;
 
 class MonitoringStateInterface
 {
-    const UP          = 1;
-    const UNKNOWN     = 0;
-    const DOWN        = -1;
-    const WARNING     = -2;
+    const UP          = 'UP';
+    const WARNING     = 'WARNING';
+    const DOWN        = 'DOWN';
+    const UNKNOWN     = 'UNKNOWN';
 }
