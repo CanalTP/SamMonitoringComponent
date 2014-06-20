@@ -2,7 +2,7 @@
 
 namespace CanalTP\SamMonitoringComponent;
 
-class MonitoringStateInterface
+class StateMonitorInterface
 {
     const UP          = 'UP';
     const WARNING     = 'WARNING';
