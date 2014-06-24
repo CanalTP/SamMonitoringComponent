@@ -34,4 +34,11 @@ class CategoryMonitor implements CategoryMonitorInterface
     {
         return ($this->services);
     }
+
+    public function check()
+    {
+        foreach ($this->services as $service) {
+            $service->check();
+        }
+    }
 }

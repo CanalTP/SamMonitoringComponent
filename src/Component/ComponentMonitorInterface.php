@@ -15,4 +15,6 @@ interface ComponentMonitorInterface
 
     public function getCategories();
     public function addCategory(CategoryMonitorInterface $category);
+
+    public function check();
 }

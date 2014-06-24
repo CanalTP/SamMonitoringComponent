@@ -11,4 +11,6 @@ interface CategoryMonitorInterface
 
     public function addService(ServiceMonitorInterface $service);
     public function getServices();
+
+    public function check();
 }
