@@ -7,20 +7,21 @@ use CanalTP\SamMonitoringComponent\Service\AbstractServiceMonitor;
 
 class Rest extends AbstractServiceMonitor
 {
-    protected $host;
-    protected $verb;
+    private $host;
+    private $code;
+    private $verb;
 
-    public function __construct($host, $serviceName, $verb = 'GET')
+    public function __construct($host, $serviceName, $code = 200, $verb = 'GET')
     {
         parent::__construct();
-        
+
         $this->name = ucfirst($serviceName);
         $this->state = State::UNKNOWN;
-        
+
         $this->host = $host;
         $this->verb = $verb;
+        $this->code = $code;
     }
-
 
     public function check()
     {
@@ -29,14 +30,14 @@ class Rest extends AbstractServiceMonitor
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_exec($curl);
         $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        
-        if ($code == 200) {
+
+        if ($code == $this->code) {
             $this->state = State::UP;
         } else {
             $this->state = State::DOWN;
-            $this->message = 'Service (' . $this->host . ') response code ' . $code;
+            $this->message = 'Service (' . $this->host . ') response code ' . $code . ' not ' . $this->code;
         }
-        
+
     }
 
 }
