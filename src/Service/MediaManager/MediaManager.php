@@ -20,24 +20,24 @@ class MediaManager extends AbstractServiceMonitor
 
     private function checkIsReadable()
     {
-        if ($this->state != State::DOWN && !is_readable($this->path)) {
-            $this->state = State::DOWN;
+        if ($this->getState() != State::DOWN && !is_readable($this->path)) {
+            $this->setState(State::DOWN);
             $this->setMessage('Folder can\'t be readable. (' . $this->path . ')');
         }
     }
 
     private function checkIsWridable()
     {
-        if ($this->state != State::DOWN && !is_writable($this->path)) {
-            $this->state = State::DOWN;
+        if ($this->getState() != State::DOWN && !is_writable($this->path)) {
+            $this->setState(State::DOWN);
             $this->setMessage('Folder can\'t be readable. (' . $this->path . ')');
         }
     }
 
     private function checkFileExist()
     {
-        if ($this->state != State::DOWN && !file_exists($this->path)) {
-            $this->state = State::DOWN;
+        if ($this->getState() != State::DOWN && !file_exists($this->path)) {
+            $this->setState(State::DOWN);
             $this->setMessage('Folder does not exist. (' . $this->path . ')');
         }
     }
@@ -47,6 +47,6 @@ class MediaManager extends AbstractServiceMonitor
         $this->checkFileExist();
         $this->checkIsReadable();
         $this->checkIsWridable();
-        $this->state = ($this->state == State::UNKNOWN) ? State::UP: $this->state;
+        $this->setState(($this->getState() == State::UNKNOWN) ? State::UP : $this->getState());
     }
 }

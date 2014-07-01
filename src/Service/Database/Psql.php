@@ -14,7 +14,7 @@ class Psql extends AbstractServiceMonitor
         parent::__construct();
 
         $this->setName('PostgreSQL');
-        $this->state = State::UP;
+        $this->setState(State::UNKNOWN);
         $this->connection = "host=$host port=$port dbname=$name user=$user password=$password";
     }
 
@@ -23,8 +23,8 @@ class Psql extends AbstractServiceMonitor
         // TODO: Remove the '@' and use try / catch
         $db = @pg_connect($this->connection);
 
-        if ($this->state == State::UP && !pg_ping($db)) {
-            $this->state = State::DOWN;
+        if ($this->state != State::DOWN && !pg_ping($db)) {
+            $this->setState(State::DOWN);
             $this->setMessage("Can't connect to database.");
         }
 
@@ -36,5 +36,6 @@ class Psql extends AbstractServiceMonitor
     public function check()
     {
         $this->checkConnection();
+        $this->setState(($this->getState() == State::UNKNOWN) ? State::UP : $this->getState());
     }
 }

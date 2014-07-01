@@ -20,7 +20,7 @@ class RabbitMq extends AbstractServiceMonitor
         parent::__construct();
 
         $this->setName('RabbitMQ');
-        $this->state = State::UNKNOWN;
+        $this->setState(State::UNKNOWN);
         $this->host = $host;
         $this->port = $port;
         $this->vhost = $vhost;
@@ -39,7 +39,7 @@ class RabbitMq extends AbstractServiceMonitor
                 $this->vhost
             );
         } catch (\Exception $ex) {
-            $this->state = State::DOWN;
+            $this->setState(State::DOWN);
             $this->setMessage('RabbitMQ Server not responding (' . $ex->getMessage() . ')');
         }
         if ($this->amqpConnection) {
@@ -50,6 +50,6 @@ class RabbitMq extends AbstractServiceMonitor
     public function check()
     {
         $this->checkConnection();
-        $this->state = ($this->state == State::UNKNOWN) ? State::UP: $this->state;
+        $this->setState(($this->getState() == State::UNKNOWN) ? State::UP : $this->getState());
     }
 }
