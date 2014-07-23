@@ -23,7 +23,6 @@ class ComponentTest extends \PHPUnit_Framework_TestCase
         $this->manager->addService($service, 'test', 'ytreza');
         $this->manager->getComponent('test')->check();
         
-        
         $this->assertEquals($service->getState(), \CanalTP\SamMonitoringComponent\StateMonitorInterface::UP);
     }
 }
