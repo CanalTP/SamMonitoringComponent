@@ -2,7 +2,6 @@
 
 namespace CanalTP\SamMonitoringComponent\Component;
 
-use CanalTP\SamMonitoringComponent\StateMonitorInterface as State;
 use CanalTP\SamMonitoringComponent\Category\CategoryMonitorInterface;
 
 interface ComponentMonitorInterface
@@ -11,7 +10,7 @@ interface ComponentMonitorInterface
     public function setName($name);
 
     public function getState();
-    public function setState(State $state);
+    public function setState($state);
 
     public function getCategories();
     public function addCategory(CategoryMonitorInterface $category);

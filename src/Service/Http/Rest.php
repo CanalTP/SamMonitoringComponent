@@ -16,7 +16,7 @@ class Rest extends AbstractServiceMonitor
         parent::__construct();
 
         $this->name = ucfirst($serviceName);
-        $this->state = State::UNKNOWN;
+        $this->setState(State::UNKNOWN);
 
         $this->host = $host;
         $this->verb = $verb;
@@ -32,9 +32,9 @@ class Rest extends AbstractServiceMonitor
         $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         if ($code == $this->code) {
-            $this->state = State::UP;
+            $this->setState(State::UP);
         } else {
-            $this->state = State::DOWN;
+            $this->setState(State::DOWN);
             $this->message = 'Service (' . $this->host . ') response code ' . $code . ' not ' . $this->code;
         }
 
