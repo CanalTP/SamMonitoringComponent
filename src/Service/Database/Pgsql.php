@@ -5,7 +5,7 @@ namespace CanalTP\SamMonitoringComponent\Service\Database;
 use CanalTP\SamMonitoringComponent\StateMonitorInterface as State;
 use CanalTP\SamMonitoringComponent\Service\AbstractServiceMonitor;
 
-class Psql extends AbstractServiceMonitor
+class Pgsql extends AbstractServiceMonitor
 {
     private $connection = null;
 
@@ -18,7 +18,7 @@ class Psql extends AbstractServiceMonitor
         $this->connection = "host=$host port=$port dbname=$name user=$user password=$password";
     }
 
-    private function checkConnection()
+    protected function checkConnection()
     {
         // TODO: Remove the '@' and use try / catch
         $db = @pg_connect($this->connection);
