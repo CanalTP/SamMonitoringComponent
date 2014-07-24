@@ -28,7 +28,7 @@ class RabbitMq extends AbstractServiceMonitor
         $this->password = $password;
     }
 
-    private function checkConnection()
+    protected function checkConnection()
     {
         try {
             $this->amqpConnection = new AMQPConnection(

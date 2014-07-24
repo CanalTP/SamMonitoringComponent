@@ -10,7 +10,6 @@ interface ComponentMonitorInterface
     public function setName($name);
 
     public function getState();
-    public function setState($state);
 
     public function getCategories();
     public function addCategory(CategoryMonitorInterface $category);
