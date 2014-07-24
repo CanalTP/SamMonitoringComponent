@@ -5,7 +5,7 @@ namespace CanalTP\SamMonitoringComponent\Service\Database;
 use CanalTP\SamMonitoringComponent\StateMonitorInterface as State;
 use CanalTP\SamMonitoringComponent\Service\AbstractServiceMonitor;
 
-class Psql extends AbstractServiceMonitor
+class Pgsql extends AbstractServiceMonitor
 {
     private $connection = null;
 
