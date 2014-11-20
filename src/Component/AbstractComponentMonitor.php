@@ -28,6 +28,13 @@ abstract class AbstractComponentMonitor implements ComponentMonitorInterface
         $this->name = $name;
     }
 
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return ($this);
+    }
+
     public function getState()
     {
         return ($this->state);
