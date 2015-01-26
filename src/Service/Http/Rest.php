@@ -28,6 +28,7 @@ class Rest extends AbstractServiceMonitor
         $curl = curl_init($this->host);
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->verb);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
         curl_exec($curl);
         $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
